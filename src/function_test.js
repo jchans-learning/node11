@@ -1,0 +1,1 @@
+const your_name = require('./func')
