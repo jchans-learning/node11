@@ -10,7 +10,7 @@ class Employee extends Person {
         return JSON.stringify(this.toJSON())
     }
 
-    // 覆蓋父類別的功能
+    // 重新定義與父層同名的方法，會覆蓋父類別的方法
     toJSON(){
         return JSON.stringify({
             name: this.name,
