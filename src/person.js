@@ -7,18 +7,18 @@ class Person {
 
     // toJSON() ，老師自己定義的
 
-    // toJSON(){
-    //     return {
-    //         name: this.name,
-    //         age: this.age,
-    //     }
-    // }
     toJSON(){
-        return JSON.stringify({
+        return {
             name: this.name,
             age: this.age,
-        })
+        }
     }
+    // toJSON(){
+    //     return JSON.stringify({
+    //         name: this.name,
+    //         age: this.age,
+    //     })
+    // }
 
     aaa = ()=>{
         return 123;

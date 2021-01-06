@@ -1,8 +1,7 @@
 const Person = require('./person');
-
 class Employee extends Person {
     constructor(id, name='noname', age=20){
-        super(name='noname', age=20)
+        super(name, age)
         this.employee_id = id;
     }
 
@@ -12,11 +11,9 @@ class Employee extends Person {
 
     // 重新定義與父層同名的方法，會覆蓋父類別的方法
     toJSON(){
-        return JSON.stringify({
-            name: this.name,
-            age: this.age,
-            employee_id: this.employee_id
-        })
+        const obj = super.toJSON();
+        obj.employee_id = this.employee_id;
+        return obj;
     }
 }
 
