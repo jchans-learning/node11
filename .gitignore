@@ -3,3 +3,4 @@ package-lock.json
 
 # .env 檔一般要 ignore ，以免洩漏帳密或金鑰等
 # 現在在練習，所以上傳
+# 工作用的環境， .env 不會跟專案檔一起 push ，會另外找方式上傳
