@@ -4,10 +4,17 @@ const express = require('express');
 
 const app = express();
 
+// 設定EJS set 原則上放前面
+app.set('view engine', 'ejs');
+
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     res.send('Hello！');
+});
+
+app.get('/try-ejs', (req, res) => {
+    res.render('a', {name:'Shinder'});
 });
 
 // 404 放在最後面
