@@ -1,2 +1,5 @@
 node_modules/
 package-lock.json
+
+# .env 檔一般要 ignore ，以免洩漏帳密或金鑰等
+# 現在在練習，所以上傳
