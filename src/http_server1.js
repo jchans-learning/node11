@@ -7,7 +7,8 @@ const server = http.createServer((req, res) => {
     });
     res.end(`
         <h2>Hello 我要說中文！</h2>
-        <p>${req.url}
+        <p>${req.url}</p>
+        <p>測試nodemon3</p>
     `);
 });
 server.listen(3000);
