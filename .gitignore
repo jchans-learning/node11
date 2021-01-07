@@ -1,4 +1,7 @@
+# npm install 不是 global 的東西都會在 node_modules 
+# 不是我寫的，依據 package.json 自動產生所以不用 push 到 repo
 node_modules/
+
 package-lock.json
 
 # .env 檔一般要 ignore ，以免洩漏帳密或金鑰等
