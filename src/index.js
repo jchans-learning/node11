@@ -1,11 +1,16 @@
-var express = require('express');
+require('dotenv').config();
 
-var app = express();
+const express = require('express');
 
-app.get('/', function (req, res) {
-    res.send('Hello World!');
+const app = express();
+
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+    res.send('Hello！');
 });
 
+// 404 放在最後面
 app.use((req, res) => {
     res.type('text/plain');
     res.status(404);
