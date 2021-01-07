@@ -1,7 +1,7 @@
 // src/http_server1.js
 
 const http = require('http');
-const server = htto.createServer((req, res) => {
+const server = http.createServer((req, res) => {
     res.writeHead(200, {
         'Content-Type': 'text/html'
     });
