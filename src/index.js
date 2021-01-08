@@ -51,6 +51,13 @@ app.post('/try-post-form', (req, res) => {
     res.render('try-post-form', req.body);
 });
 
+// 測試 xhr async
+// 參考資料： https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
+//
+app.get('/pending', (req, res)=>{
+    // res.send('ok');
+})
+
 // 404 放在最後面
 app.use((req, res) => {
     res.type('text/plain');
