@@ -9,31 +9,20 @@
   </head>
   <body>
     <script>
-      // 待查詢相關文件
-
-      // const p = new Promise((resolve, reject) => {
-      //   console.log(111);
-      //   setTimeout(function () {
-      //     console.log(222);
-      //     resolve("aaaaa");
-      //   }, 500 + Math.random() * 1000);
-      //   console.log(333);
-      // });
-
-      // p.then((r) => {
-      //   console.log(r);
-      // });
-
       new Promise((resolve, reject) => {
         console.log(111);
         setTimeout(function () {
           console.log(222);
-          resolve("aaaaa");
+          reject("bbbb");
         }, 500 + Math.random() * 1000);
         console.log(333);
-      }).then((r) => {
-        console.log(r);
-      });
+      })
+        .then((r) => {
+          console.log(r);
+        })
+        .catch((ex) => {
+          console.log("ex:", ex);
+        });
     </script>
   </body>
 </html>
