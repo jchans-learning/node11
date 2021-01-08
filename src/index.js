@@ -16,6 +16,13 @@ app.get('/', (req, res) => {
 app.get('/try-ejs', (req, res) => {
     res.render('a', {name:'Hans!'});
 });
+app.get('/json-sales', (req, res) => {
+    const sales = require(
+        __dirname + '/../data/sales'
+    )
+
+    res.json(sales);
+});
 
 // 404 放在最後面
 app.use((req, res) => {
@@ -31,5 +38,5 @@ app.use((req, res) => {
 
 const port = process.env.PORT || 3000;
 app.listen(port, ()=> {
-    console.log(`啟動 server 監聽 PORT ${port}`);
+    console.log(`啟動 server 監聽 PORT ${port}`, new Date());
 })
