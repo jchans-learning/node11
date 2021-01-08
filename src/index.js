@@ -31,7 +31,7 @@ app.get('/json-sales', (req, res) => {
 
 // 練習取得 queryString 的資料
 app.get('/try-qs', (req, res) => {
-    res.json(req.query)
+    res.json(req.query);
 });
 
 // 練習取得 POST 資料
@@ -40,12 +40,15 @@ app.get('/try-qs', (req, res) => {
 // https://www.npmjs.com/package/body-parser
 //
 app.post('/try-post', (req, res) => {
-    res.json(req.body)
+    res.json(req.body);
 });
 
 app.get('/try-post-form', (req, res) => {
+    res.render('try-post-form');
 });
+
 app.post('/try-post-form', (req, res) => {
+    res.json(req.body);
 });
 
 // 404 放在最後面

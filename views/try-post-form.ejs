@@ -1,7 +1,19 @@
 <%- include('parts/html-head') %>
 <%- include('parts/navbar') %>
 <div class="container">
-  <h2><%= name %></h2>
+
+  <form method="POST">
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="text" class="form-control" id="email" name="email">
+      <small id="emailHelp" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </div>
 <%- include('parts/scripts') %>
 <%- include('parts/html-foot') %>
