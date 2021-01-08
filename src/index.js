@@ -16,12 +16,13 @@ app.get('/', (req, res) => {
 app.get('/try-ejs', (req, res) => {
     res.render('a', {name:'Hans!'});
 });
+
 app.get('/json-sales', (req, res) => {
     const sales = require(
         __dirname + '/../data/sales'
-    )
+    );
 
-    res.json(sales);
+    res.render('json-sales', {sales});
 });
 
 // 404 放在最後面
