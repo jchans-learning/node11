@@ -30,8 +30,7 @@ app.get('/try-qs', (req, res) => {
     res.json(req.query)
 });
 
-// 練習 POST
-// 自訂義 urlencodedParser 來解析
+// 練習取得 POST 資料 ，自訂義 urlencodedParser 來解析
 // 在 Postman 軟體裡測試，注意要選 x-www-form-urlencoded
 const urlencodedParser = express.urlencoded({extended:false})
 app.post('/try-post', urlencodedParser, (req, res) => {
