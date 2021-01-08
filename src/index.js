@@ -44,7 +44,7 @@ app.post('/try-post', (req, res) => {
 });
 
 app.get('/try-post-form', (req, res) => {
-    res.render('try-post-form', {email:'', password:''});
+    res.render('try-post-form');
 });
 
 app.post('/try-post-form', (req, res) => {
