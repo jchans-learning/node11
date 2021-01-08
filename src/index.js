@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/try-ejs', (req, res) => {
-    res.render('a', {name:'Shinder'});
+    res.render('a', {name:'Hans!'});
 });
 
 // 404 放在最後面
