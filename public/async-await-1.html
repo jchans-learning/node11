@@ -19,18 +19,23 @@
         });
       }
 
-      doSomething()
-        .then((r) => {
-          console.log(1, r);
-          return doSomething();
-        })
-        .then((r) => {
-          console.log(2, r);
-          return doSomething();
-        })
-        .then((r) => {
-          console.log(3, r);
-        });
+      async function a() {
+        const r1 = await doSomething();
+        console.log(r1);
+        const r2 = await doSomething();
+        console.log(r2);
+        console.log(await doSomething());
+      }
+
+      a().then((r) => {
+        console.log("end", r);
+      });
+
+      (async () => {
+        for (let i = 0; i < 10; i++) {
+          console.log(i, await doSomething());
+        }
+      })();
     </script>
   </body>
 </html>
