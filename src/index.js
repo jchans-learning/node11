@@ -9,6 +9,10 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 
+// Middleware 各自處理能負責的 Content-Type
+app.use(express.urlencoded({extended:false}));
+app.use(express.json());
+
 app.get('/', (req, res) => {
     res.send('Hello！');
 });
@@ -30,13 +34,12 @@ app.get('/try-qs', (req, res) => {
     res.json(req.query)
 });
 
-// 練習取得 POST 資料 ，自訂義 urlencodedParser 來解析
+// 練習取得 POST 資料
 // 在 Postman 軟體裡測試，注意要選 x-www-form-urlencoded
 // body-parser 解析器， middleware
 // https://www.npmjs.com/package/body-parser
 //
-const urlencodedParser = express.urlencoded({extended:false})
-app.post('/try-post', urlencodedParser, (req, res) => {
+app.post('/try-post', (req, res) => {
     res.json(req.body)
 });
 
