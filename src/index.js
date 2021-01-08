@@ -33,6 +33,7 @@ app.get('/try-qs', (req, res) => {
 // 練習取得 POST 資料 ，自訂義 urlencodedParser 來解析
 // 在 Postman 軟體裡測試，注意要選 x-www-form-urlencoded
 // body-parser 解析器， middleware
+// https://www.npmjs.com/package/body-parser
 //
 const urlencodedParser = express.urlencoded({extended:false})
 app.post('/try-post', urlencodedParser, (req, res) => {
