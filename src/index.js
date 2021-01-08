@@ -43,6 +43,11 @@ app.post('/try-post', (req, res) => {
     res.json(req.body)
 });
 
+app.get('/try-post-form', (req, res) => {
+});
+app.post('/try-post-form', (req, res) => {
+});
+
 // 404 放在最後面
 app.use((req, res) => {
     res.type('text/plain');
