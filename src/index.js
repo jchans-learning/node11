@@ -48,7 +48,7 @@ app.get('/try-post-form', (req, res) => {
 });
 
 app.post('/try-post-form', (req, res) => {
-    res.render('try-post-form');
+    res.render('try-post-form', req.body);
 });
 
 // 404 放在最後面
