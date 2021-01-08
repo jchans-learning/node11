@@ -11,6 +11,19 @@
       </tr>
     </thead>
     <tbody>
+
+      <%# 練習 React 風格的作法 %>
+
+      <%- sales.map(i=>{
+        return `<tr>
+        <td> ${i.id} </td>
+        <td> ${i.name} </td>
+        <td> ${i.age} </td>
+        </tr>`;
+      }).join('')
+       %> 
+
+      <!-- 
       <% for(let item of sales) { %> 
       <tr>
         <td><%= item.id %> </td>
@@ -18,6 +31,7 @@
         <td><%= item.age %> </td>
       </tr>
       <% } %> 
+      -->
     </tbody>
   </table>
 
