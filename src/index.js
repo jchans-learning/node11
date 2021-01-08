@@ -29,6 +29,10 @@ app.get('/try-qs', (req, res) => {
     res.json(req.query)
 });
 
+app.get('/try-qs', (req, res) => {
+    res.json(req.query)
+});
+
 // 404 放在最後面
 app.use((req, res) => {
     res.type('text/plain');
