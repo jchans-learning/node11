@@ -25,12 +25,17 @@ app.get('/json-sales', (req, res) => {
     res.render('json-sales', {sales});
 });
 
+// 練習取得 queryString 的資料
 app.get('/try-qs', (req, res) => {
     res.json(req.query)
 });
 
-app.get('/try-qs', (req, res) => {
-    res.json(req.query)
+// 練習 POST
+// 自訂義 urlencodedParser 來解析
+// 在 Postman 軟體裡測試，注意要選 x-www-form-urlencoded
+const urlencodedParser = express.urlencoded({extended:false})
+app.post('/try-post', urlencodedParser, (req, res) => {
+    res.json(req.body)
 });
 
 // 404 放在最後面
