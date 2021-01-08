@@ -55,7 +55,7 @@ app.post('/try-post-form', (req, res) => {
 // 參考資料： https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
 //
 app.get('/pending', (req, res)=>{
-    // res.send('ok');
+    res.send('ok');
 })
 
 // 404 放在最後面

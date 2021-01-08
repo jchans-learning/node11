@@ -27,7 +27,8 @@
         };
 
         // 3. 設定
-        xhr.open("GET", "/pending", false);
+        xhr.open("GET", "/pending", true);
+        // xhr.open("GET", "/pending", false);
 
         // 4. 發送
         xhr.send();
