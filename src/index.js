@@ -1,6 +1,9 @@
 require('dotenv').config();
 
 const express = require('express');
+const multer = require('multer');
+// const upload = multer({dest:'tmp_upload/'})
+const upload = require(__dirname + "/modules/upload-imgs")
 
 const app = express();
 
@@ -51,12 +54,26 @@ app.post('/try-post-form', (req, res) => {
     res.render('try-post-form', req.body);
 });
 
+app.post('/try-upload', upload.single('avatar'), (req, res) => {
+    res.json({
+        file: req.file,
+        body: req.body,
+    })
+})
+
+app.post('/try-upload2', upload.array('photo'), (reg, res) => {
+    res.json(req.files);
+})
+
+
 // 測試 xhr async
 // 參考資料： https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
 //
 app.get('/pending', (req, res)=>{
     res.send('ok');
 })
+
+
 
 // 404 放在最後面
 app.use((req, res) => {
