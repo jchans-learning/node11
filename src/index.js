@@ -5,6 +5,7 @@ const session = require('express-session');
 const multer = require('multer');
 // const upload = multer({dest:'tmp_upload/'})
 const upload = require(__dirname + "/modules/upload-imgs")
+const moment = require('moment-timezone');
 
 const app = express();
 
@@ -107,7 +108,16 @@ app.get('/try-session', (req, res)=>{
         my_var:req.session.my_var,
         session: req.session
     });
-    
+});
+
+app.get('/try-moment', (req, res)=>{
+    const fm = 'YYYY-MM-DD HH:mm:ss';
+    const m1 = moment();
+
+    res.json({
+        m1: m1.format(fm),
+        m1a: m1.tz('Europe/London').format(fm),
+    })
 });
 
 

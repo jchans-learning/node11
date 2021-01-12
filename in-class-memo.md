@@ -96,3 +96,20 @@ middleware 的概念是 Express 的核心概念
 ### 安裝 expression-session
 
 https://www.npmjs.com/package/express-session
+
+## 時區
+
+時區資料庫
+https://en.wikipedia.org/wiki/Tz_database
+
+ICANN
+https://en.wikipedia.org/wiki/ICANN
+
+moment.js
+https://momentjs.com/
+
+moment.js 常被詬病太肥。我們上課用 moment-timezone 這個部分。
+
+另一個常見的 Lib ：
+day.js
+https://day.js.org/
