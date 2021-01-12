@@ -124,11 +124,9 @@ app.get('/try-moment', (req, res)=>{
     })
 });
 
-app.get('/try-db', (req, res)=>{
-    db.query("SELECT * FROM `address_book` ORDER BY `sid` DESC LIMIT 6")
-        .then(([rows, fields])=>{
+app.get('/try-db', async (req, res)=>{
+    const [rows, fields] = await db.query("SELECT * FROM `address_book` ORDER BY `sid` DESC LIMIT 6")
             res.json(rows)
-        })
 });
 
 // 測試 xhr async
