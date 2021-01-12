@@ -124,6 +124,7 @@ app.get('/try-moment', (req, res)=>{
     })
 });
 
+// 後面都會用 async await 的方式來寫
 app.get('/try-db', async (req, res)=>{
     const [rows, fields] = await db.query("SELECT * FROM `address_book` ORDER BY `sid` DESC LIMIT 6")
             res.json(rows)
