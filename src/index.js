@@ -1,8 +1,9 @@
 require('dotenv').config();
 
 const express = require('express');
-const MysqlStore = require('express-mysql-session');
 const session = require('express-session');
+const MysqlStore = require('express-mysql-session')(session);
+
 const moment = require('moment-timezone');
 const multer = require('multer');
 // const upload = multer({dest:'tmp_upload/'})
@@ -127,11 +128,14 @@ app.get('/try-moment', (req, res)=>{
     })
 });
 
-// 後面都會用 async await 的方式來寫
+// 資料庫連線，後面都會用 async await 的方式來寫
 app.get('/try-db', async (req, res)=>{
     const [rows, fields] = await db.query("SELECT * FROM `address_book` ORDER BY `sid` DESC LIMIT 6")
             res.json(rows)
 });
+
+// 命名相似的時候，注意不要搞混路由與資料夾名稱
+app.use('/address-book', require(__dirname + '/routes/address-book'))
 
 // 測試 xhr async
 // 參考資料： https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
