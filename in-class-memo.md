@@ -123,3 +123,8 @@ RFC2822
 
 npm MySQL 官方套件
 https://www.npmjs.com/package/mysql
+
+mysql2
+https://www.npmjs.com/package/mysql2
+
+安裝 mysql2

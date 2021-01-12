@@ -2,10 +2,11 @@ require('dotenv').config();
 
 const express = require('express');
 const session = require('express-session');
+const moment = require('moment-timezone');
 const multer = require('multer');
 // const upload = multer({dest:'tmp_upload/'})
 const upload = require(__dirname + "/modules/upload-imgs")
-const moment = require('moment-timezone');
+const db = require(__dirname + '/modules/db_connect2')
 
 const app = express();
 
