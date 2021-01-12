@@ -84,3 +84,9 @@ res.render()
 主體 body£
 
 ```
+
+## 路由模組化
+
+middleware 的概念是 Express 的核心概念
+
+裝了 Chrome 的擴充 JSON Viewer 。方便自己開發的時候閱讀產生的 JSON 。

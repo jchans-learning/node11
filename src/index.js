@@ -65,15 +65,29 @@ app.post('/try-upload2', upload.array('photo'), (req, res) => {
     res.json(req.files);
 })
 
-app.get('/my-params1/:action?/:id?', (req, res) => {
-    req.params.first = true;
-    res.json(req.params);
-});
 app.get('/my-params1/:action/:id', (req, res) => {
     req.params.second = true;
     res.json(req.params);
 });
 
+app.get('/my-params1/:action?/:id?', (req, res) => {
+    req.params.first = true;
+    res.json(req.params);
+});
+
+// 在路由上用 Regular Expression
+app.get(/^\/m\/09\d{2}-?\d{3}-?\d{3}$/i, (req, res) => {
+    let u = req.url.slice(3)
+    u = u.split('?')[0]; // query string 的部分不要
+    // u = u.split('-').join('');
+    u = u.replace(/-/g, '');
+    res.send(u);
+});
+
+// 原則上較嚴格的路由放前面
+app.use('/ttt', require(__dirname + '/routes/admin2'))
+// 不同路徑，但可用同一個路由處理
+app.use('/', require(__dirname + '/routes/admin2'))
 
 // 測試 xhr async
 // 參考資料： https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
