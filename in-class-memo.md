@@ -110,6 +110,16 @@ https://momentjs.com/
 
 moment.js 常被詬病太肥。我們上課用 moment-timezone 這個部分。
 
-另一個常見的 Lib ：
+另一個常見的 Lib
 day.js
 https://day.js.org/
+
+一般來說我們講 session ，說的是伺服器的後端。在 Chrome 上的 Local Storage 與 Session Storage 是前端的東西，與後端的 Session 無關。
+
+ISO8601
+RFC2822
+
+## 連線 MySQL
+
+npm MySQL 官方套件
+https://www.npmjs.com/package/mysql
