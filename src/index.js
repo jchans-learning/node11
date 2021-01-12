@@ -124,6 +124,12 @@ app.get('/try-moment', (req, res)=>{
     })
 });
 
+app.get('/try-db', (req, res)=>{
+    db.query("SELECT * FROM `address_book` ORDER BY `sid` DESC LIMIT 6")
+        .then(([rows, fields])=>{
+            res.json(rows)
+        })
+});
 
 // 測試 xhr async
 // 參考資料： https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest

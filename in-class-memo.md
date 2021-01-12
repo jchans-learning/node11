@@ -127,4 +127,8 @@ https://www.npmjs.com/package/mysql
 mysql2
 https://www.npmjs.com/package/mysql2
 
-安裝 mysql2
+安裝 mysql2 ，為使用 promise 的功能。
+
+"MySQL2 also support Promise API. Which works very well with ES7 async await."
+
+在 JS 裡用 MySQL 語法用 backtick 可能會有風險，所以老師示範的時候是用雙引號。用 backtick 可能須跳脫。
