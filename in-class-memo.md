@@ -89,4 +89,10 @@ res.render()
 
 middleware 的概念是 Express 的核心概念
 
-裝了 Chrome 的擴充 JSON Viewer 。方便自己開發的時候閱讀產生的 JSON 。
+裝了 Chrome 的擴充 [JSON Viewer](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh/related?utm_source=chrome-ntp-icon) 。方便自己開發的時候閱讀產生的 JSON 。
+
+## Session
+
+### 安裝 expression-session
+
+https://www.npmjs.com/package/express-session

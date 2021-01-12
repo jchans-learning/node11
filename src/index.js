@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const session = require('express-session');
 const multer = require('multer');
 // const upload = multer({dest:'tmp_upload/'})
 const upload = require(__dirname + "/modules/upload-imgs")
@@ -15,6 +16,14 @@ app.use(express.static('public'));
 // Middleware 各自處理能負責的 Content-Type
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
+app.use(session({
+    saveUninitialized: false,
+    resave: false,
+    secret: 'aosdjsdfrnv028nv;oeufzixcyuhRFASDVZSCvasvalkns;ov0nq83rnv;alefvdfadsv',
+    cookie: {
+        maxAge: 1800000
+    }
+}))
 
 app.get('/', (req, res) => {
     res.send('Hello！');
@@ -88,6 +97,19 @@ app.get(/^\/m\/09\d{2}-?\d{3}-?\d{3}$/i, (req, res) => {
 app.use('/ttt', require(__dirname + '/routes/admin2'))
 // 不同路徑，但可用同一個路由處理
 app.use('/', require(__dirname + '/routes/admin2'))
+
+
+app.get('/try-session', (req, res)=>{
+    req.session.my_var = req.session.my_var || 0;
+    req.session.my_var++;
+
+    res.json({
+        my_var:req.session.my_var,
+        session: req.session
+    });
+    
+});
+
 
 // 測試 xhr async
 // 參考資料： https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
