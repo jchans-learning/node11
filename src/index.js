@@ -61,9 +61,18 @@ app.post('/try-upload', upload.single('avatar'), (req, res) => {
     })
 })
 
-app.post('/try-upload2', upload.array('photo'), (reg, res) => {
+app.post('/try-upload2', upload.array('photo'), (req, res) => {
     res.json(req.files);
 })
+
+app.get('/my-params1/:action?/:id?', (req, res) => {
+    req.params.first = true;
+    res.json(req.params);
+});
+app.get('/my-params1/:action/:id', (req, res) => {
+    req.params.second = true;
+    res.json(req.params);
+});
 
 
 // 測試 xhr async
@@ -71,7 +80,7 @@ app.post('/try-upload2', upload.array('photo'), (reg, res) => {
 //
 app.get('/pending', (req, res)=>{
     res.send('ok');
-})
+});
 
 
 

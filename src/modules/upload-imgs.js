@@ -2,9 +2,9 @@ const multer = require('multer');
 const {v4: uuidv4} = require('uuid');
 
 const extMap = {
-  'image/jpeg': 'jpg',
-  'image/png': 'png',
-  'image/': '',
+  'image/jpeg': '.jpg',
+  'image/png': '.png',
+  'image/gif': '.gif',
 }
 
 const storage = multer.diskStorage({

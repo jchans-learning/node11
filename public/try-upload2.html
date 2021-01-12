@@ -7,30 +7,31 @@
   </head>
   <body>
     <form name="form1" style="display: done">
-      <input type="file" name="avatar" accept="image/*" />
-      <input type="hidden" name="aaa" value="100" />
+      <input type="file" name="photo" accept="image/*" multiple />
     </form>
 
     <button onclick="upload_btn.click()">上傳</button>
     <img src="" alt="" id="myimg" />
 
     <script>
-      const upload_btn = document.querySelector("input[name=avatar]");
+      const upload_btn = document.querySelector("input[name=photo]");
 
       function doUpload() {
         const fd = new FormData(document.form1);
 
-        fetch("/try-upload", {
+        fetch("/try-upload2", {
           method: "POST",
           body: fd,
         })
           .then((r) => r.json())
           .then((info) => {
             console.log(info);
-            if (info.file) {
-              document.querySelector("#myimg").src =
-                "/img/" + info.file.filename;
-            }
+            // 只傳一張圖的時候的 code
+            //
+            // if (info.file) {
+            //   document.querySelector("#myimg").src =
+            //     "/img/" + info.file.filename;
+            // }
           });
       }
       upload_btn.addEventListener("change", doUpload);
