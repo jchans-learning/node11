@@ -1,5 +1,6 @@
 <%- include('../parts/html-head') %>
 <%- include('../parts/navbar') %>
+
 <div class="container">
   <div class="row">
     <div class="col">
@@ -26,23 +27,27 @@
     <table class="table table-striped">
       <thead>
         <tr>
+          <th scope="col"><i class="fas fa-minus-circle"></i></th>
           <th scope="col">#</th>
           <th scope="col">姓名</th>
           <th scope="col">email</th>
           <th scope="col">手機</th>
           <th scope="col">生日</th>
           <th scope="col">地址</th>
+          <th scope="col"><i class="fas fa-edit"></i></th>
         </tr>
       </thead>
       <tbody>
         <% for(let i of rows){ %> 
         <tr>
+          <td class="remove-icon"><i class="fas fa-minus-circle"></i></td>
           <td><%= i.sid %></td>
           <td><%= i.name %></td>
           <td><%= i.email %></td>
           <td><%= i.mobile %></td>
           <td><%= i.birthday2 %></td>
           <td><%= i.address %></td>
+          <td><i class="fas fa-edit"></i></td>
         </tr>
         <% } %> 
       </tbody>

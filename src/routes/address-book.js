@@ -51,6 +51,13 @@ const listHandler = async (req, res)=>{
   // res.render('address-book/list', output);
   // 如過果要改路由，例如用在 /address-book/ 要怎麼寫？
 
+
+
+router.delete('/:sid', async (req, res)=>{
+  const [result] = await db.query("DELETE FROM `address_book` WHERE sid = ?", [req.params.sid]);
+  res.json(result);
+})
+
 router.get('/add', async (req, res)=>{
   const output = await listHandler(req);
   res.render('address-book/add', output);
