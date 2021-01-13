@@ -12,14 +12,20 @@ router.get('/list', async (req, res)=>{
 
   let page = parseInt(req.query.page) || 1;
   if(totalRows > 0){
-    if(page < 1) page = 1;
-    if(page > totalPages) page = totalPages;
+    if(page < 1) {
+      return res.redirect('/address-book/list');
+    }
+    if(page > totalPages) {
+      return res.redirect(
+      `/address-book/list?page=${totalPages}`
+      );
+    };
 
     [rows] = await db.query("SELECT * FROM `address_book` ORDER BY `sid` DESC LIMIT ?, ?", 
   [(page-1)*perPage, perPage]);
   }
 
-  res.json({
+  res.render('address-book/list', {
     perPage,
     totalRows,
     totalPages,
