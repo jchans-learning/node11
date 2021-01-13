@@ -1,6 +1,6 @@
 const express = require('express');
-const moment = require('moment-timezone');
 const upload = require(__dirname + "/../modules/upload-imgs")
+const moment = require('moment-timezone');
 const router = express.Router();
 const db = require(__dirname + '/../modules/db_connect2')
 
@@ -17,9 +17,10 @@ const listHandler = async (req, res)=>{
   const totalRows = t_rows[0].num;
   const totalPages = Math.ceil(totalRows/perPage);
 
+  let page = parseInt(req.query.page) || 1;
+
   let rows = [];
 
-  let page = parseInt(req.query.page) || 1;
   if(totalRows > 0){
     if(page < 1) page = 1;
     if(page > totalPages) page = totalPages;
@@ -56,7 +57,25 @@ router.get('/add', async (req, res)=>{
 })
 
 router.post('/add', upload.none(), async (req, res)=>{
-  res.json({...req.body, success: true});
+  // const data = {...req.body}; // 比較不好的寫法
+  const {name, email, mobile, birthday, address} = req.body;
+  const data = {name, email, mobile, birthday, address};
+  data.created_at = new Date();
+  data.stars = 5;
+  const [result] = await db.query("INSERT INTO `address_book` SET ?", [data]);
+  console.log(result);
+  
+if (result.affectedRows===1) {
+  res.json({
+    success: true,
+    bode: req.body,
+  });
+} else {
+  res.json({
+    success: false,
+    body: req.body,
+  });
+}
 })
 
 router.get('/list', async (req, res)=>{
