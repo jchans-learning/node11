@@ -100,6 +100,7 @@
                       info.classList.remove('alert-danger');
                       info.classList.add('alert-success');
                       info.innerHTML = '修改成功';
+                      setTimeout(function(){window.location.href = "/address-book/list"}, 2000);
                   } else {
                       info.classList.remove('alert-success');
                       info.classList.add('alert-danger');
