@@ -8,11 +8,17 @@ router.get('/list', async (req, res)=>{
   const totalRows = t_rows[0].num;
   const totalPages = Math.ceil(totalRows/perPage);
 
-  let page = parseInt(req.query.page) || 1;
+  let rows = [];
 
-  const [rows] = await db.query("SELECT * FROM `address_book` ORDER BY `sid` DESC LIMIT ?, ?", 
+  let page = parseInt(req.query.page) || 1;
+  if(totalRows > 0){
+    if(page < 1) page = 1;
+    if(page > totalPages) page = totalPages;
+
+    [rows] = await db.query("SELECT * FROM `address_book` ORDER BY `sid` DESC LIMIT ?, ?", 
   [(page-1)*perPage, perPage]);
-  
+  }
+
   res.json({
     perPage,
     totalRows,
