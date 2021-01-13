@@ -53,16 +53,44 @@ const listHandler = async (req, res)=>{
 
 
 
-router.delete('/:sid', async (req, res)=>{
-  const [result] = await db.query("DELETE FROM `address_book` WHERE sid = ?", [req.params.sid]);
-  res.json(result);
+// Update
+router.get('/:sid/edit', async (req, res)=>{
+  const [rows] = await db.query("SELECT * FROM `address_book` WHERE sid = ?", [req.params.sid]);
+  if(rows.length !== 1){
+    return res.redirect(re.locals.baseUrl + '/list');
+  }
+  rows[0].birthday = moment(rows[0].birthday).format('YYYY-MM-DD');
+  res.render('address-book/edit', rows[0]);
 })
 
+// 用 fetch 的方式處理的時候要注意 upload.none()
+router.post('/:sid/edit', upload.none(), async (req, res)=>{
+  const {name, email, mobile, birthday, address} = req.body;
+  const data = {name, email, mobile, birthday, address};
+
+  const [result] = await db.query("UPDATE `address_book` SET ? WHERE sid = ?", [data, req.params.sid]);
+  
+  // rows[0].birthday = moment(rows[0].birthday).format('YYYY-MM-DD');
+  res.json({
+    success: result.changedRows===1
+  });
+})
+
+// Delete
+router.delete('/:sid', async (req, res)=>{
+  const [result] = await db.query("DELETE FROM `address_book` WHERE sid = ?", [req.params.sid]);
+  res.json({
+    success: result.affectedRows===1
+  });
+})
+
+// Create
 router.get('/add', async (req, res)=>{
   const output = await listHandler(req);
   res.render('address-book/add', output);
 })
 
+// 用 fetch 的方式處理的時候要注意 upload.none()
 router.post('/add', upload.none(), async (req, res)=>{
   // const data = {...req.body}; // 比較不好的寫法
   const {name, email, mobile, birthday, address} = req.body;

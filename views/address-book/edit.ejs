@@ -7,7 +7,7 @@
   }
 </style>
 
-<div class="container mt-3  ">
+<div class="container mt-3">
   <div class="row d-flex justify-content-center">
       <div class="col-lg-6">
 
@@ -23,28 +23,28 @@
                   <form name="form1" novalidate onsubmit="checkForm(); return false;">
                       <div class="form-group">
                           <label for="name">** name</label>
-                          <input type="text" class="form-control" id="name" name="name" required>
+                          <input type="text" class="form-control" id="name" name="name" required value="<%= name %>">
                           <small class="form-text error-msg" style="display: none;"></small>
                       </div>
                       <div class="form-group">
                           <label for="email">** email</label>
-                          <input type="email" class="form-control" id="email" name="email">
+                          <input type="email" class="form-control" id="email" name="email" value="<%= email %>">
                           <small class="form-text error-msg" style="display: none;"></small>
                       </div>
                       <div class="form-group">
                           <label for="mobile">mobile</label>
-                          <input type="text" class="form-control" id="mobile" name="mobile" pattern="09\d{2}-?\d{3}-?\d{3}">
+                          <input type="text" class="form-control" id="mobile" name="mobile" pattern="09\d{2}-?\d{3}-?\d{3}" value="<%= mobile %>">
                       </div>
                       <div class="form-group">
                           <label for="birthday">birthday</label>
-                          <input type="date" class="form-control" id="birthday" name="birthday">
+                          <input type="date" class="form-control" id="birthday" name="birthday" value="<%= birthday %>">
                       </div>
 
                       <div class="form-group">
                           <label for="address">address</label>
-                          <textarea class="form-control" name="address" id="address" cols="30" rows="3"></textarea>
+                          <textarea class="form-control" name="address" id="address" cols="30" rows="3"><%= address %></textarea>
                       </div>
-                      <button type="submit" class="btn btn-primary">新增</button>
+                      <button type="submit" class="btn btn-primary">更新資料</button>
                   </form>
 
               </div>
@@ -99,11 +99,11 @@
                   if (obj.success) {
                       info.classList.remove('alert-danger');
                       info.classList.add('alert-success');
-                      info.innerHTML = '新增成功';
+                      info.innerHTML = '修改成功';
                   } else {
                       info.classList.remove('alert-success');
                       info.classList.add('alert-danger');
-                      info.innerHTML = '新增失敗';
+                      info.innerHTML = '資料沒有修改';
                   }
                   info.style.display = 'block';
               })
