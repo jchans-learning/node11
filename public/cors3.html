@@ -2,8 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CROS</title>
+    <title>Title</title>
   </head>
   <body>
     <button onclick="sendAjax()">send ajax</button>
@@ -11,7 +10,9 @@
 
     <script>
       function sendAjax() {
-        fetch("http://localhost:3006/try-moment")
+        fetch("http://localhost:3006/try-session", {
+          credentials: "include",
+        })
           .then((r) => r.text())
           .then((txt) => {
             info.innerHTML = txt;

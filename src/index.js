@@ -32,14 +32,17 @@ app.use(session({
     }
 }))
 
+// 練習使用 CORS
 const corsOptions = {
-    credentials: true, 
-    origin: function (origin, cb) {
+    credentials: true,
+    origin: function(origin, cb){
+        console.log('origin:', origin);
         cb(null, true);
     }
 }
 
-app.use(cors());
+app.use(cors(corsOptions));
+
 app.use((req, res, next)=>{
     res.locals.baseUrl = req.baseUrl;
     res.locals.url = req.url;

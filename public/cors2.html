@@ -14,7 +14,7 @@
       // 拿到的資料似乎有問題，需要另外處理
       //
       function sendAjax() {
-        fetch("http://localhost:3000/try-session")
+        fetch("http://localhost:3006/try-session")
           .then((r) => r.text())
           .then((txt) => {
             info.innerHTML = txt;
