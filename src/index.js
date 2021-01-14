@@ -32,6 +32,13 @@ app.use(session({
     }
 }))
 
+const corsOptions = {
+    credentials: true, 
+    origin: function (origin, cb) {
+        cb(null, true);
+    }
+}
+
 app.use(cors());
 app.use((req, res, next)=>{
     res.locals.baseUrl = req.baseUrl;
