@@ -152,3 +152,14 @@ https://hapi.dev/
 
 npm 的 cors 套件
 https://www.npmjs.com/package/cors
+
+## 其他補充
+
+jwt
+https://jwt.io/
+
+在 node 不能用 fetch 的問題
+
+axios
+https://www.npmjs.com/package/axios
+可以在前端也可以在後端用
