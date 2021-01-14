@@ -141,3 +141,7 @@ npm joi
 
 hapi 的一部分
 https://hapi.dev/
+
+### 使用 CORS
+
+- Cross-Origin Resource Sharing
