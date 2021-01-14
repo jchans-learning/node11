@@ -4,6 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const MysqlStore = require('express-mysql-session')(session);
 const cors = require('cors');
+const { default: axios } = require('axios');
 
 const moment = require('moment-timezone');
 const multer = require('multer');
@@ -147,6 +148,7 @@ app.get('/try-moment', (req, res)=>{
     })
 });
 
+
 // 資料庫連線，後面都會用 async await 的方式來寫
 app.get('/try-db', async (req, res)=>{
     const [rows, fields] = await db.query("SELECT * FROM `address_book` ORDER BY `sid` DESC LIMIT 6")
@@ -180,10 +182,19 @@ app.post('/login', upload.none(), async (req, res)=>{
 })
 
 
+// 登出
 app.get('/logout', (req, res)=>{
     delete req.session.admin;
     res.redirect('/');
 })
+
+
+// axios 練習
+app.get('/yahoo', async (req, res)=>{
+    const response = await axios.get('https://tw.yahoo.com/');
+    res.send(response.data);
+})
+
 
 // 測試 xhr async
 // 參考資料： https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
