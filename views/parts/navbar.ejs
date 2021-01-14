@@ -16,11 +16,30 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="<%= baseUrl %>/list">列表</a>
+          <a class="nav-link" href="/address-book/list">列表</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<%= baseUrl %>/add">新增</a>
+          <a class="nav-link" href="/address-book/add">新增</a>
         </li>
+      </ul>
+
+      <% if(locals.sess && sess.admin){ %> 
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link"><%= sess.admin.account %> </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">登出</a>
+          </li>
+      <% } else { %> 
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/login">登入</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">註冊</a>
+        </li>
+      <% } %> 
         
       </ul>
     </div>

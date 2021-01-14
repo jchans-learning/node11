@@ -18,7 +18,7 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 
-// Middleware 各自處理能負責的 Content-Type
+// Session Middleware, Middleware 各自處理能負責的 Content-Type
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 app.use(session({
@@ -34,11 +34,12 @@ app.use(session({
 app.use((req, res, next)=>{
     res.locals.baseUrl = req.baseUrl;
     res.locals.url = req.url;
+    res.locals.sess = req.session;
     next();
   });
 
 app.get('/', (req, res) => {
-    res.send('Hello！');
+    res.render('a', {name: '首頁'})
 });
 
 app.get('/try-ejs', (req, res) => {
@@ -141,7 +142,36 @@ app.get('/try-db', async (req, res)=>{
 });
 
 // 命名相似的時候，注意不要搞混路由與資料夾名稱
-app.use('/address-book', require(__dirname + '/routes/address-book'))
+app.use('/address-book', require(__dirname + '/routes/address-book'));
+
+
+// 註冊
+app.get('/login', async (req, res)=>{
+    res.render('login');
+})
+
+app.post('/login', upload.none(), async (req, res)=>{
+    const [rows] = await db.query("SELECT * FROM admins WHERE account=? AND password=SHA1(?)", 
+    [req.body.account, req.body.password]);
+
+    if(rows.length===1){
+        req.session.admin = rows[0];
+        res.json({
+            success: true,
+        })
+    } else {
+        res.json({
+            success: false,
+            body: req.body
+        })
+    }
+})
+
+
+app.get('/logout', (req, res)=>{
+    delete req.session.admin;
+    res.redirect('/');
+})
 
 // 測試 xhr async
 // 參考資料： https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
