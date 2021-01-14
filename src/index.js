@@ -6,6 +6,7 @@ const MysqlStore = require('express-mysql-session')(session);
 const cors = require('cors');
 const { default: axios } = require('axios');
 const cheerio = require('cheerio');
+const jwt = require('jsonwebtoken');
 
 const moment = require('moment-timezone');
 const multer = require('multer');
@@ -173,6 +174,26 @@ app.post('/login', upload.none(), async (req, res)=>{
         req.session.admin = rows[0];
         res.json({
             success: true,
+        })
+    } else {
+        res.json({
+            success: false,
+            body: req.body
+        })
+    }
+})
+
+
+// jwt login
+app.post('/login-jwt', upload.none(), async (req, res)=>{
+    const [rows] = await db.query("SELECT sid, account, nickname FROM admins WHERE account=? AND password=SHA1(?)", 
+    [req.body.account, req.body.password]);
+
+    if(rows.length===1){
+        const token = jwt.sign({...rows[0]}, process.env.JWT_KEY);
+        res.json({
+            success: true,
+            token,
         })
     } else {
         res.json({

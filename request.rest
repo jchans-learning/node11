@@ -15,3 +15,11 @@ POST http://localhost:3006/try-post
 Content-Type: application/x-www-form-urlencoded
 
 name=hhans&id=jwwwwwww
+
+
+### JWT 登入測試
+
+POST http://localhost:3006/login-jwt
+Content-Type: application/json
+
+{"account":"laohanj", "password": "123456"}

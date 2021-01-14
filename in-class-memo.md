@@ -159,8 +159,11 @@ https://www.npmjs.com/package/cors
 
 JSON web Token.
 https://jwt.io/
+https://www.npmjs.com/package/jsonwebtoken
 
-在 node 不能用 fetch 的問題
+在 node 不能用 fetch 的問題（？）
+用起來比較麻煩但是不會有 cookie 無法跨網域的問題（？）
+做登入驗證
 
 ### axios
 
