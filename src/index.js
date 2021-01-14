@@ -5,6 +5,7 @@ const session = require('express-session');
 const MysqlStore = require('express-mysql-session')(session);
 const cors = require('cors');
 const { default: axios } = require('axios');
+const cheerio = require('cheerio');
 
 const moment = require('moment-timezone');
 const multer = require('multer');
@@ -194,6 +195,19 @@ app.get('/yahoo', async (req, res)=>{
     const response = await axios.get('https://tw.yahoo.com/');
     res.send(response.data);
 })
+
+// cheerio 練習
+app.get('/yahoo2', async (req, res)=>{
+    const response = await axios.get('https://tw.yahoo.com/');
+    // res.send(response.data);
+    const $ = cheerio.load(response.data);
+
+    $('img').each(function (i, el) {
+        res.write(el.attribs.src + '<br>');
+    })
+    res.end('');
+})
+
 
 
 // 測試 xhr async

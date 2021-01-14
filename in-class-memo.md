@@ -155,11 +155,29 @@ https://www.npmjs.com/package/cors
 
 ## 其他補充
 
-jwt
+### jwt
+
+JSON web Token.
 https://jwt.io/
 
 在 node 不能用 fetch 的問題
 
-axios
+### axios
+
 https://www.npmjs.com/package/axios
 可以在前端也可以在後端用
+
+### cheerio
+
+https://www.npmjs.com/package/cheerio
+語法有點像是 jQuery
+
+### Selenium
+
+https://medium.com/marketingdatascience/selenium%E6%95%99%E5%AD%B8-%E4%B8%80-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8webdriver-send-keys-988816ce9bed
+
+### CSRF
+
+- Cross Site Request Forgery (CSRF)
+
+### 瀏覽器的 Local Storage 與 Session Storage
