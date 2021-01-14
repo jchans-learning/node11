@@ -23,3 +23,20 @@ POST http://localhost:3006/login-jwt
 Content-Type: application/json
 
 {"account":"laohanj", "password": "123456"}
+
+
+####
+
+POST http://localhost:3006/verify-jwt
+Content-Type: application/json
+
+{"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOjEsImFjY291bnQiOiJsYW9oYW5qIiwibmlja25hbWUiOiJsYW9oYW5qIiwiaWF0IjoxNjEwNjE0MDcwfQ.oTSZCh2pr1yLBX_ZogpLrq9XM236jHvm6RKTdJ3f7qc"}
+
+
+#### Separate token to Header
+
+POST http://localhost:3006/verify2-jwt
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOjEsImFjY291bnQiOiJsYW9oYW5qIiwibmlja25hbWUiOiJsYW9oYW5qIiwiaWF0IjoxNjEwNjE0MDcwfQ.oTSZCh2pr1yLBX_ZogpLrq9XM236jHvm6RKTdJ3f7qc
+
+{"name": "hans", "hobby": "dnd"}

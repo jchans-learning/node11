@@ -203,6 +203,37 @@ app.post('/login-jwt', upload.none(), async (req, res)=>{
     }
 })
 
+// jwt verify
+app.post('/verify-jwt', async (req, res)=>{
+    jwt.verify(req.body.token, process.env.JWT_KEY, (error, payload)=>{
+        if (error) {
+            res.json({error});
+        } else {
+            res.json(payload);
+        }
+    })
+})
+
+// jwt verify 2
+// https://bitbucket.org/lsd0125/mfee09-nodejs/src/b048607a7de353e58e5e45f12c83763bc0d9184a/public/set_jwt_token.html
+//
+app.post('/verify2-jwt', async (req, res)=>{
+        let token = req.get('Authorization');
+        if(token.indexOf('Bearer ')===0){
+            token = token.slice(7);
+            jwt.verify(token, process.env.JWT_KEY, (error, payload)=>{
+                if (error) {
+                    res.json({error});
+                } else {
+                    res.json(payload);
+                }
+            })
+
+        } else {
+            res.json({error: 'bad bearer token'});
+        }
+})
+
 
 // 登出
 app.get('/logout', (req, res)=>{
