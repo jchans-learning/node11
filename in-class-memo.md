@@ -144,4 +144,11 @@ https://hapi.dev/
 
 ### 使用 CORS
 
+- 參考： https://developer.mozilla.org/zh-TW/docs/Web/HTTP/CORS
 - Cross-Origin Resource Sharing
+  - protocal
+  - domain
+  - port
+
+npm 的 cors 套件
+https://www.npmjs.com/package/cors

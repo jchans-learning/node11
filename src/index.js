@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const MysqlStore = require('express-mysql-session')(session);
+const cors = require('cors');
 
 const moment = require('moment-timezone');
 const multer = require('multer');
@@ -31,6 +32,7 @@ app.use(session({
     }
 }))
 
+app.use(cors());
 app.use((req, res, next)=>{
     res.locals.baseUrl = req.baseUrl;
     res.locals.url = req.url;
